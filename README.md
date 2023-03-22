@@ -29,19 +29,19 @@ Just install all modules
 pnpm i --frozen-lockfile
 ```
 
-### Build
+### Docker build
 
-To build all apps and packages, run the following command:
+To build a docker image for one of the apps, run a command like the following:
 
-```
-pnpm run build
+```sh
+docker build -f ./apps/api/Dockerfile .
 ```
 
 ### Develop
 
 To develop all apps and packages, run the following command:
 
-```
+```sh
 pnpm run dev
 ```
 
@@ -51,7 +51,7 @@ Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo
 
 By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
 
-```
+```sh
 pnpm dlx turbo login
 ```
 
@@ -59,7 +59,7 @@ This will authenticate the Turborepo CLI with your [Vercel account](https://verc
 
 Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
 
-```
+```sh
 pnpm dlx turbo link
 ```
 
