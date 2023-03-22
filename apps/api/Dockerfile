@@ -9,6 +9,7 @@ FROM base AS builder
 # Set working directory
 WORKDIR /app
 COPY . .
+# Filter all files related to service
 RUN pnpm dlx turbo prune --scope=api --docker
 
 #####   INSTALLER   #####
@@ -31,9 +32,7 @@ RUN pnpm exec turbo run build --filter=api...
 #####   PROD   #####
 FROM node:18.15.0-alpine AS production
 WORKDIR /app
-# Don't run production as root
-# RUN addgroup --system --gid 1001 expressjs
-# RUN adduser --system --uid 1001 expressjs
-# USER expressjs
 COPY --from=installer /app .
+# Remove source code and dev dependencies
+RUN rm -rf /app/utilities && find . -type d -name src | grep -v 'node_modules' | xargs rm -rf
 CMD node apps/api/dist/index.js
