@@ -5,4 +5,12 @@ RUN apk add --no-cache libc6-compat && apk update
 # Install pnpm
 RUN npm i -g pnpm@7.30.0
 
+WORKDIR /node
+
+COPY package*.json* pnpm-lock.yaml pnpm-workspace.yaml ./
+
+RUN pnpm i --frozen-lockfile
+
+WORKDIR /node/app
+
 CMD [ "node" ]
