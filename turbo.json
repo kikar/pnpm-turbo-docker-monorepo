@@ -4,12 +4,23 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+      "outputs": ["dist/**"]
     },
     "lint": {
+      "dependsOn": ["^build"],
       "outputs": []
     },
-    "dev": {
+    "start": {
+      "cache": false
+      // "persistent": true // Disabled becasue of https://github.com/vercel/turbo/issues/4291
+    },
+    "add-job": {
+      "cache": false
+    },
+    "docker-build": {
+      "dependsOn": ["^build"]
+    },
+    "reset": {
       "cache": false
     }
   }

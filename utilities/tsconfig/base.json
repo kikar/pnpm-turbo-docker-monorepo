@@ -4,14 +4,17 @@
   "compilerOptions": {
     "target": "es2022",
     "module": "CommonJS",
+    "moduleResolution": "node",
+    "isolatedModules": true,
+    "preserveWatchOutput": true,
     "declaration": true,
+    "declarationMap": true,
     "sourceMap": true,
+    "inlineSources": false,
     "incremental": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "strict": true,
-
-    "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },

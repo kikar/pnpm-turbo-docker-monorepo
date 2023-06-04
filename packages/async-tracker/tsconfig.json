@@ -2,17 +2,10 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "outDir": "./dist",
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "composite": true
   },
   "exclude": ["node_modules"],
   "extends": "tsconfig/base.json",
-  "include": ["src"],
-  "references": [
-    {
-      "path": "../../packages/async-tracker"
-    },
-    {
-      "path": "../../packages/logger"
-    }
-  ]
+  "include": ["src"]
 }

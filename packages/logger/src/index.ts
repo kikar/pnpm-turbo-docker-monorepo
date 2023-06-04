@@ -1,3 +1,5 @@
-export const log = (str: any) => {
-  console.log("logger: " + str);
-};
+export * from './logger';
+export * from './logger.constants';
+export * from './logger.factory';
+export * from './logger.module';
+

@@ -1,6 +1,6 @@
 {
   "name": "monorepo",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -8,20 +8,40 @@
     "utilities/*"
   ],
   "scripts": {
-    "clean": "turbo run clean",
+    "reset": "turbo run reset && rm -rf node_modules",
     "build": "turbo run build",
-    "dev": "turbo run dev",
+    "start": "dotenv -- turbo run start",
+    "add-job": "dotenv -- turbo run add-job",
+    "docker-build": "turbo run docker-build",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "prepare": "husky install"
   },
   "devDependencies": {
+    "@nestjs/cli": "^9.5.0",
+    "dotenv-cli": "^7.2.1",
+    "eslint": "^8.40.0",
     "eslint-config-custom": "workspace:*",
-    "prettier": "latest",
-    "turbo": "latest"
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
+    "turbo": "^1.9.8",
+    "typescript": "^5.0.4"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=18.0.0"
   },
-  "dependencies": {},
-  "packageManager": "pnpm@7.30.0"
+  "packageManager": "pnpm@8.4.0",
+  "volta": {
+    "node": "18.16.0",
+    "pnpm": "8.4.0"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.json": [
+      "prettier --write"
+    ]
+  }
 }
